@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken - IT Professional Portfolio</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           GLOBAL STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar {
+            background: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.9);
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        #home {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .greeting {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .highlight-text {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary-custom {
+            background: white;
+            color: #764ba2;
+            border: 2px solid white;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: #f8f9fa;
+            color: #667eea;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        #about {
+            background: #dcecff;
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .about-content h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: #495057;
+        }
+
+        .education-item {
+            border-left: 3px solid #667eea;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item h5 {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .education-item p {
+            color: #6c757d !important;
+            font-size: 0.95rem;
+        }
+
+        /* Skills */
+        .skills-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .skills-title h3 {
+            color: #333;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .skills-title p {
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* ============================================
+           SECTION TITLE (Reusable)
+           ============================================ */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            color: #333;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        /* ============================================
+           PROJECTS SECTION
+           ============================================ */
+        #projects {
+            background: #e3fff9;
+            padding: 5rem 0;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin-bottom: 2rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border: 1px solid #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-content p {
+            color: #495057;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack Badges */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-content .list-unstyled li i {
+            color: #667eea !important;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        #contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: 50px;
+            left: -200px;
+            z-index: 0;
+        }
+
+        #contact::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            right: 50px;
+            z-index: 0;
+        }
+
+        #contact .section-title h2,
+        #contact .section-title p {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-form .form-control {
+            border: 1px solid #e0e0e0;
+            padding: 0.9rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-form .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
+            color: white;
+        }
+
+        .contact-info {
+            color: white;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item i {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-info-item h5 {
+            margin-bottom: 0.25rem;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #764ba2;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 991px) {
+            .hero-content {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+            
+            .description {
+                margin: 0 auto 2rem auto;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .btn-primary-custom {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .btn-custom {
+                padding: 10px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Ken Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <span class="greeting">Welcome to my portfolio website!</span>
+                        <h1>I'm <span class="highlight-text">Ken</span>.</h1>
+                        <h2 class="subtitle">I am a Software Engineer</h2>
+                        <p class="description">
+                            I create elegant solutions through code and design. Passionate about gaming, coding, and bringing ideas to life.
+                        </p>
+                        <div class="hero-btns">
+                            <a href="#projects" class="btn btn-custom btn-primary-custom">View My Work</a>
+                            <a href="#contact" class="btn btn-custom btn-primary-custom">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Ken's Workspace" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know more about my background and skills</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-content">
+                        <h3>Education & Background</h3>
+                        <div class="education-item">
+                            <h5>Degree in Software Engineering</h5>
+                            <p class="text-muted mb-0"><i class="bi bi-building me-2"></i>Southern University College</p>
+                            <p class="text-muted"><i class="bi bi-geo-alt me-2"></i>Johor Bahru, Malaysia</p>
+                        </div>
+                        <p>I'm a passionate IT professional with a strong foundation in web development, programming, and networking. I love transforming ideas into functional, beautiful digital experiences. When I'm not coding, you'll find me gaming or exploring the latest in tech and design.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-title">
+                <h3>My Skills</h3>
+                <p>These are the core competencies I bring to every project</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-item">
+                        <i class="bi bi-code-slash"></i>
+                        <h4>HTML & CSS</h4>
+                        <p>Modern, responsive web design</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-item">
+                        <i class="bi bi-braces"></i>
+                        <h4>Java</h4>
+                        <p>Object-oriented programming</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-item">
+                        <i class="bi bi-diagram-3"></i>
+                        <h4>Networking</h4>
+                        <p>Infrastructure & protocols</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="skill-item">
+                        <i class="bi bi-palette"></i>
+                        <h4>Design</h4>
+                        <p>UI/UX principles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Check out some of my recent work</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="project-card">
+                        <img src="IOT_website.png" alt="IoT Healthcare">
+                        <div class="project-content">
+                            <h3>IoT in Healthcare Website</h3>
+                            <p>An informational website exploring the impact of Internet of Things (IoT) technology in the healthcare industry.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">Responsive Design</span>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Multi-section content layout</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Modern UI with icons and images</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Real-world statistics and references</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="project-card">
+                        <img src="IfSpam.png" alt="IfSpam Website">
+                        <div class="project-content">
+                            <h3>IfSpam Website</h3>
+                            <p>An informational website designed to educate users about cybersecurity with interactive quiz questions.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Interactive information sections</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Cybersecurity quiz for engagement</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Clean, responsive interface</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-card">
+                        <img src="UnityGame_script.png" alt="Game Narrative">
+                        <div class="project-content">
+                            <h3>Game Narrative & UI Showcase</h3>
+                            <p>A Unity-based game prototype where I developed narrative flow, UI layout, and player experience.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Unity</span>
+                                <span class="tech-badge">C#</span>
+                                <span class="tech-badge">AudioManager</span>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Created game storyline and dialogue</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Designed UI layout for dialogues</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Implemented UI interactions and sounds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="project-card">
+                        <img src="Portfolio_website.png" alt="Portfolio Website">
+                        <div class="project-content">
+                            <h3>Portfolio Website</h3>
+                            <p>A clean and functional portfolio website demonstrating HTML and CSS skills with responsive design.</p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Single-page navigation</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Contact form integration</li>
+                                <li><i class="bi bi-check-circle-fill me-2"></i>Mobile-friendly layout</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Let's work together on your next project</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Contact Information</h3>
+                        <div class="contact-info-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Johor Bahru, Malaysia</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="bi bi-envelope-fill"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>B240111B@sc.edu.my</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="bi bi-mortarboard-fill"></i>
+                            <div>
+                                <h5>Institution</h5>
+                                <p>Southern University College</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form onsubmit="handleFormSubmit(event)">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Example: Poon Wei Ken" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Example: B240111B@sc.edu.my" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-submit w-100">
+                                <i class="bi bi-send me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ken Portfolio</p>
+            <p>
+                <a href="https://www.sc.edu.my/" target="_blank">Southern University College</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
